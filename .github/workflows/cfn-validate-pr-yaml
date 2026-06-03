@@ -1,0 +1,6 @@
+
+name: Validate CloudFormation on PR
+
+on:
+  pull_request:
+    
