@@ -3,25 +3,24 @@ Description: "S3 Bucket for our CICD PR"
 
 Parameters:
   Environment:
-    Type: String
-    Default: test
+    Type: "String"
+    Default: "test"
     AllowedValues:
-      - test
-      - staging
-      - production
+      - "test"
+      - "staging"
+      - "production"
 
 Resources:
   MyS3Bucket:
     Type: "AWS::S3::Bucket"
     Properties:
-      BucketName: !Sub "${AWS::StackName}-${Environment}-bucket"
-    Tags:
-      - Key: Environment
-        Value: !Ref Environment
+      BucketName: !Sub "${AWS::StackName}-${Environment}-buckets"
+      Tags:
+        - Key: Environment
+          Value: !Ref Environment
 
-  Outputs:
-    BucketName:
-      Description: "Name of created S3 bucket"
-      Value: !Ref MyS3Bucket
-
+Outputs:
+  BucketName:
+    Description: "Name of created S3 bucket"
+    Value: !Ref MyS3Bucket
   
