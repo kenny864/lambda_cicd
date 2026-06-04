@@ -3,6 +3,12 @@ name: Validate CloudFormation on PR
 
 on: 
   pull_request:
+    types: 
+      - opened
+      - synchronize
+      - reopened
+      - closed
+    
     paths:
       - "cloudformation/*"
 
@@ -46,7 +52,7 @@ jobs:
             })
 
   cleanup-on-merge:
-    if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged
     runs-on: "ubuntu-latest"
     steps:
       - name: Configure AWS credentials
